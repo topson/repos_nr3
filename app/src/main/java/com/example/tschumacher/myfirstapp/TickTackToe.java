@@ -1,22 +1,18 @@
 package com.example.tschumacher.myfirstapp;
 
-import android.annotation.TargetApi;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 public class TickTackToe extends AppCompatActivity {
-    int counter = 0;
+    int counter;
     String [] board = new String [9];
-    Button[] buttonx = new Button[10];
+    Button[] buttons = new Button[10];
     int [] index = new int[10];
 
     @Override
@@ -41,15 +37,15 @@ public class TickTackToe extends AppCompatActivity {
         for (int i  =  0; i < 10; i++){
             Drawable background = findViewById(R.id.restart).getBackground();
             if (9 == i){
-                buttonx[i] = (Button) findViewById(index[i]);
-                buttonx[i].setText("Result");
+                buttons[i] = (Button) findViewById(index[i]);
+                buttons[i].setText("Result");
             }
             else {
-                buttonx[i] = (Button) findViewById(index[i]);
-                buttonx[i].setText("-");
-                buttonx[i].setClickable(true);
-                buttonx[i].setBackgroundColor(Color.LTGRAY);
-                buttonx[i].setBackground(background);
+                buttons[i] = (Button) findViewById(index[i]);
+                buttons[i].setText("-");
+                buttons[i].setClickable(true);
+                buttons[i].setBackgroundColor(Color.LTGRAY);
+                buttons[i].setBackground(background);
             }
         }
 
@@ -78,7 +74,7 @@ public class TickTackToe extends AppCompatActivity {
     }
     public void click (View view) {
 
-        String[] myarr = {"X", "O"};
+        String[] myArr = {"X", "O"};
         int gameOver = 0;
         /*int[] index = new int[9];
         int j = 0;
@@ -90,21 +86,21 @@ public class TickTackToe extends AppCompatActivity {
 
         if (view instanceof Button) {
             Button button = (Button) view;
-            button.setText(myarr[counter % 2]);
+            button.setText(myArr[counter % 2]);
             button.setBackgroundColor(Color.CYAN);
             button.setClickable(false);
             for (int k = 0; k < 9; k++){
-                if (buttonx[k] == button){
-                    board[k] = myarr[counter % 2];
+                if (buttons[k] == button){
+                    board[k] = myArr[counter % 2];
                 }
             }
 
             /*
             int the_button = button.getId();
-            button.setText(myarr[counter % 2]);
+            button.setText(myArr[counter % 2]);
             for (int k = 0; k < 9; k++){
                 if (index[k] == the_button){
-                    board[k] = (myarr[counter % 2]);
+                    board[k] = (myArr[counter % 2]);
                 }
             }
             button.setBackgroundColor(Color.CYAN);
@@ -115,74 +111,75 @@ public class TickTackToe extends AppCompatActivity {
                 gameOver = 3;
             }
         }
+
         if (1 == counter % 2) {
-            if (null != board[4] && myarr[0].equals(board[4])) {
-                if ((null != board[0]) && myarr[0].equals(board[0]) && (null != board[8]) && myarr[0].equals(board[8])) {
+            if (null != board[4] && myArr[0].equals(board[4])) {
+                if ((null != board[0]) && myArr[0].equals(board[0]) && (null != board[8]) && myArr[0].equals(board[8])) {
                     gameOver = 1;
                 }
-                else if (null != board[6] && board[6].equals(myarr[0]) && null != board[6] && board[2].equals(myarr[0])) {
+                else if (null != board[6] && board[6].equals(myArr[0]) && null != board[6] && board[2].equals(myArr[0])) {
                     gameOver = 1;
                 }
-                else if (null != board[1] && board[1].equals(myarr[0]) && null != board[7] && board[7].equals(myarr[0])) {
+                else if (null != board[1] && board[1].equals(myArr[0]) && null != board[7] && board[7].equals(myArr[0])) {
                     gameOver = 1;
                 }
-                else if (null != board[3] && board[3].equals(myarr[0]) && null != board[5] && board[5].equals(myarr[0])) {
-                    gameOver = 1;
-                }
-            }
-            else if (null != board[0] && board[0].equals(myarr[0])) {
-                if (null != board[3] && board[3].equals(myarr[0]) && null != board[6] && board[6].equals(myarr[0])) {
-                    gameOver = 1;
-                }
-                else if (null != board[1] && board[1].equals(myarr[0]) && null != board[2] && board[2].equals(myarr[0])) {
+                else if (null != board[3] && board[3].equals(myArr[0]) && null != board[5] && board[5].equals(myArr[0])) {
                     gameOver = 1;
                 }
             }
-            else if (null != board[8] && board[8].equals(myarr[0])) {
-                if (null != board[6] && board[6].equals(myarr[0]) && null != board[7] && board[7].equals(myarr[0])) {
+            else if (null != board[0] && board[0].equals(myArr[0])) {
+                if (null != board[3] && board[3].equals(myArr[0]) && null != board[6] && board[6].equals(myArr[0])) {
                     gameOver = 1;
                 }
-                else if (null != board[5] && board[5].equals(myarr[0]) && null != board[2] && board[2].equals(myarr[0])) {
+                else if (null != board[1] && board[1].equals(myArr[0]) && null != board[2] && board[2].equals(myArr[0])) {
+                    gameOver = 1;
+                }
+            }
+            else if (null != board[8] && board[8].equals(myArr[0])) {
+                if (null != board[6] && board[6].equals(myArr[0]) && null != board[7] && board[7].equals(myArr[0])) {
+                    gameOver = 1;
+                }
+                else if (null != board[5] && board[5].equals(myArr[0]) && null != board[2] && board[2].equals(myArr[0])) {
                     gameOver = 1;
                 }
             }
         }
         else {
-            if (null != board[4] && myarr[1].equals(board[4])) {
-                if ((null != board[0]) && myarr[1].equals(board[0]) && (null != board[8]) && myarr[1].equals(board[8])) {
-                    gameOver = 1;
+            if (null != board[4] && myArr[1].equals(board[4])) {
+                if ((null != board[0]) && myArr[1].equals(board[0]) && (null != board[8]) && myArr[1].equals(board[8])) {
+                    gameOver = 2;
                 }
-                else if (null != board[6] && board[6].equals(myarr[1]) && null != board[6] && board[2].equals(myarr[1])) {
-                    gameOver = 1;
+                else if (null != board[6] && board[6].equals(myArr[1]) && null != board[6] && board[2].equals(myArr[1])) {
+                    gameOver = 2;
                 }
-                else if (null != board[1] && board[1].equals(myarr[1]) && null != board[7] && board[7].equals(myarr[1])) {
-                    gameOver = 1;
+                else if (null != board[1] && board[1].equals(myArr[1]) && null != board[7] && board[7].equals(myArr[1])) {
+                    gameOver = 2;
                 }
-                else if (null != board[3] && board[3].equals(myarr[1]) && null != board[5] && board[5].equals(myarr[1])) {
-                    gameOver = 1;
-                }
-            }
-            else if (null != board[0] && board[0].equals(myarr[1])) {
-                if (null != board[3] && board[3].equals(myarr[1]) && null != board[6] && board[6].equals(myarr[1])) {
-                    gameOver = 1;
-                }
-                else if (null != board[1] && board[1].equals(myarr[1]) && null != board[2] && board[2].equals(myarr[1])) {
-                    gameOver = 1;
+                else if (null != board[3] && board[3].equals(myArr[1]) && null != board[5] && board[5].equals(myArr[1])) {
+                    gameOver = 2;
                 }
             }
-            else if (null != board[8] && board[8].equals(myarr[1])) {
-                if (null != board[6] && board[6].equals(myarr[1]) && null != board[7] && board[7].equals(myarr[1])) {
-                    gameOver = 1;
+            else if (null != board[0] && board[0].equals(myArr[1])) {
+                if (null != board[3] && board[3].equals(myArr[1]) && null != board[6] && board[6].equals(myArr[1])) {
+                    gameOver = 2;
                 }
-                else if (null != board[5] && board[5].equals(myarr[1]) && null != board[2] && board[2].equals(myarr[1])) {
-                    gameOver = 1;
+                else if (null != board[1] && board[1].equals(myArr[1]) && null != board[2] && board[2].equals(myArr[1])) {
+                    gameOver = 2;
+                }
+            }
+            else if (null != board[8] && board[8].equals(myArr[1])) {
+                if (null != board[6] && board[6].equals(myArr[1]) && null != board[7] && board[7].equals(myArr[1])) {
+                    gameOver = 2;
+                }
+                else if (null != board[5] && board[5].equals(myArr[1]) && null != board[2] && board[2].equals(myArr[1])) {
+                    gameOver = 2;
                 }
             }
         }
         if (0 != gameOver){
             Button result = (Button) findViewById(R.id.button_result);
             for (int i = 0; i < 10; i++){
-                buttonx[i].setClickable(false);
+                buttons[i].setClickable(false);
             }
             if (1 == gameOver){
                 result.setText("Game Over! Player1 wins!");
