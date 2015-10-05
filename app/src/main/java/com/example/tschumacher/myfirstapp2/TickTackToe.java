@@ -1,0 +1,214 @@
+package com.example.tschumacher.myfirstapp;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.StringRes;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class TickTackToe extends AppCompatActivity {
+    int counter = 0;
+    String[] board = new String[9];
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_tick_tack_toe);
+    }
+
+    protected void onStart() {
+        super.onStart();
+        for (int i = 0; i < 9; i++){
+            board[i] = "-";
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_tick_tack_toe, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    public void click (View view) {
+
+        String[] myarr = {"X", "O"};
+        int gameOver = 0;
+        int[] index = new int[9];
+        int j = 0;
+
+        for (int i = 2131492944; i < 2131492953; i++){
+            index[j] = i;
+            j++;
+        }
+
+        if (view instanceof Button) {
+            Button button = (Button) view;
+            int the_button = button.getId();
+            button.setText(myarr[counter % 2]);
+            for (int k = 0; k < 9; k++){
+                if (index[k] == the_button){
+                    board[k] = myarr[counter % 2];
+                }
+            }
+            button.setBackgroundColor(Color.CYAN);
+            button.setClickable(false);
+
+            counter++;
+            if (9 == counter) {
+                gameOver = 3;
+            }
+        }
+        if (1 == counter % 2) {
+            if (null != board[4] && myarr[0].equals(board[4])) {
+                if ((null != board[0]) && myarr[0].equals(board[0]) && (null != board[8]) && myarr[0].equals(board[8])) {
+                    gameOver = 1;
+                }
+                else if (null != board[6] && board[6].equals(myarr[0]) && null != board[6] && board[2].equals(myarr[0])) {
+                    gameOver = 1;
+                }
+                else if (null != board[1] && board[1].equals(myarr[0]) && null != board[7] && board[7].equals(myarr[0])) {
+                    gameOver = 1;
+                }
+                else if (null != board[3] && board[3].equals(myarr[0]) && null != board[5] && board[5].equals(myarr[0])) {
+                    gameOver = 1;
+                }
+            }
+            else if (null != board[0] && board[0].equals(myarr[0])) {
+                if (null != board[3] && board[3].equals(myarr[0]) && null != board[6] && board[6].equals(myarr[0])) {
+                    gameOver = 1;
+                }
+                else if (null != board[1] && board[1].equals(myarr[0]) && null != board[2] && board[2].equals(myarr[0])) {
+                    gameOver = 1;
+                }
+            }
+            else if (null != board[8] && board[8].equals(myarr[0])) {
+                if (null != board[6] && board[6].equals(myarr[0]) && null != board[7] && board[7].equals(myarr[0])) {
+                    gameOver = 1;
+                }
+                else if (null != board[5] && board[5].equals(myarr[0]) && null != board[2] && board[2].equals(myarr[0])) {
+                    gameOver = 1;
+                }
+            }
+        }
+        else {
+            if (null != board[4] && myarr[1].equals(board[4])) {
+                if ((null != board[0]) && myarr[1].equals(board[0]) && (null != board[8]) && myarr[1].equals(board[8])) {
+                    gameOver = 1;
+                }
+                else if (null != board[6] && board[6].equals(myarr[1]) && null != board[6] && board[2].equals(myarr[1])) {
+                    gameOver = 1;
+                }
+                else if (null != board[1] && board[1].equals(myarr[1]) && null != board[7] && board[7].equals(myarr[1])) {
+                    gameOver = 1;
+                }
+                else if (null != board[3] && board[3].equals(myarr[1]) && null != board[5] && board[5].equals(myarr[1])) {
+                    gameOver = 1;
+                }
+            }
+            else if (null != board[0] && board[0].equals(myarr[1])) {
+                if (null != board[3] && board[3].equals(myarr[1]) && null != board[6] && board[6].equals(myarr[1])) {
+                    gameOver = 1;
+                }
+                else if (null != board[1] && board[1].equals(myarr[1]) && null != board[2] && board[2].equals(myarr[1])) {
+                    gameOver = 1;
+                }
+            }
+            else if (null != board[8] && board[8].equals(myarr[1])) {
+                if (null != board[6] && board[6].equals(myarr[1]) && null != board[7] && board[7].equals(myarr[1])) {
+                    gameOver = 1;
+                }
+                else if (null != board[5] && board[5].equals(myarr[1]) && null != board[2] && board[2].equals(myarr[1])) {
+                    gameOver = 1;
+                }
+            }
+        }
+        if (0 != gameOver){
+            Button result = (Button) findViewById(R.id.button_result);
+            if (1 == gameOver){
+                result.setText("Game Over! Player1 wins!");
+            }
+            else if (2 == gameOver){
+                result.setText("Game Over! Player2 wins!");
+            }
+            else {
+                result.setText("Game Over! Nobody wins, Press RESTART to go again");
+            }
+        }
+    }
+    public void restart (View view){
+
+        /*for (int i = 1; i < 10; i++){
+
+            Button button = (Button) findViewById(R.id.buttonNumber);
+            button.setText("-");
+            button.setClickable(true);
+            button.setBackgroundColor(Color.LTGRAY);
+        } */
+
+        /*Button button1 = (Button) findViewById(R.id.button1);
+        button1.setText("-");
+        button1.setClickable(true);
+        button1.setBackgroundColor(Color.LTGRAY);
+        Button button2 = (Button) findViewById(R.id.button2);
+        button2.setText("-");
+        button2.setClickable(true);
+        button2.setBackgroundColor(Color.LTGRAY);
+        Button button3 = (Button) findViewById(R.id.button3);
+        button3.setText("-");
+        button3.setClickable(true);
+        button3.setBackgroundColor(Color.LTGRAY);
+        Button button4 = (Button) findViewById(R.id.button4);
+        button4.setText("-");
+        button4.setClickable(true);
+        button4.setBackgroundColor(Color.LTGRAY);
+        Button button5 = (Button) findViewById(R.id.button5);
+        button5.setText("-");
+        button5.setClickable(true);
+        button5.setBackgroundColor(Color.LTGRAY);
+        Button button6 = (Button) findViewById(R.id.button6);
+        button6.setText("-");
+        button6.setClickable(true);
+        button6.setBackgroundColor(Color.LTGRAY);
+        Button button7 = (Button) findViewById(R.id.button7);
+        button7.setText("-");
+        button7.setClickable(true);
+        button7.setBackgroundColor(Color.LTGRAY);
+        Button button8 = (Button) findViewById(R.id.button8);
+        button8.setText("-");
+        button8.setClickable(true);
+        button8.setBackgroundColor(Color.LTGRAY);
+        Button button9 = (Button) findViewById(R.id.button9);
+        button9.setText("-");
+        button9.setClickable(true);
+        button9.setBackgroundColor(Color.LTGRAY);
+        Button result = (Button) findViewById(R.id.button_result);
+        result.setText("Result");
+        result.setClickable(true);
+        result.setBackgroundColor(Color.LTGRAY);
+        counter = 0;
+        for (int i = 0; i < 9; i++){
+            board[i] = "-";
+        } */
+        onStart();
+    }
+}
