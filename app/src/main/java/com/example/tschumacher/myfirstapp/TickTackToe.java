@@ -1,5 +1,6 @@
 package com.example.tschumacher.myfirstapp;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -14,18 +15,44 @@ import android.widget.EditText;
 
 public class TickTackToe extends AppCompatActivity {
     int counter = 0;
-    String[] board = new String[9];
+    String [] board = new String [9];
+    Button[] buttonx = new Button[10];
+    int [] index = new int[10];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tick_tack_toe);
+
     }
 
     protected void onStart() {
         super.onStart();
-        for (int i = 0; i < 9; i++){
-            board[i] = "-";
+
+        for (int k = 0; k < 9; k++){
+            board[k] = "-";
         }
+        counter = 0;
+        int j  = 0;
+        for (int i = R.id.button1; i <= R.id.button_result; i++){
+            index[j] = i;
+            j++;
+        }
+        for (int i  =  0; i < 10; i++){
+            Drawable background = findViewById(R.id.restart).getBackground();
+            if (9 == i){
+                buttonx[i] = (Button) findViewById(index[i]);
+                buttonx[i].setText("Result");
+            }
+            else {
+                buttonx[i] = (Button) findViewById(index[i]);
+                buttonx[i].setText("-");
+                buttonx[i].setClickable(true);
+                buttonx[i].setBackgroundColor(Color.LTGRAY);
+                buttonx[i].setBackground(background);
+            }
+        }
+
     }
 
     @Override
@@ -53,25 +80,35 @@ public class TickTackToe extends AppCompatActivity {
 
         String[] myarr = {"X", "O"};
         int gameOver = 0;
-        int[] index = new int[9];
+        /*int[] index = new int[9];
         int j = 0;
 
         for (int i = 2131492944; i < 2131492953; i++){
             index[j] = i;
             j++;
-        }
+        } */
 
         if (view instanceof Button) {
             Button button = (Button) view;
+            button.setText(myarr[counter % 2]);
+            button.setBackgroundColor(Color.CYAN);
+            button.setClickable(false);
+            for (int k = 0; k < 9; k++){
+                if (buttonx[k] == button){
+                    board[k] = myarr[counter % 2];
+                }
+            }
+
+            /*
             int the_button = button.getId();
             button.setText(myarr[counter % 2]);
             for (int k = 0; k < 9; k++){
                 if (index[k] == the_button){
-                    board[k] = myarr[counter % 2];
+                    board[k] = (myarr[counter % 2]);
                 }
             }
             button.setBackgroundColor(Color.CYAN);
-            button.setClickable(false);
+            button.setClickable(false); */
 
             counter++;
             if (9 == counter) {
@@ -144,6 +181,9 @@ public class TickTackToe extends AppCompatActivity {
         }
         if (0 != gameOver){
             Button result = (Button) findViewById(R.id.button_result);
+            for (int i = 0; i < 10; i++){
+                buttonx[i].setClickable(false);
+            }
             if (1 == gameOver){
                 result.setText("Game Over! Player1 wins!");
             }
@@ -156,14 +196,6 @@ public class TickTackToe extends AppCompatActivity {
         }
     }
     public void restart (View view){
-
-        /*for (int i = 1; i < 10; i++){
-
-            Button button = (Button) findViewById(R.id.buttonNumber);
-            button.setText("-");
-            button.setClickable(true);
-            button.setBackgroundColor(Color.LTGRAY);
-        } */
 
         /*Button button1 = (Button) findViewById(R.id.button1);
         button1.setText("-");
