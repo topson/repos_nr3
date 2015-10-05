@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class TickTackToe extends AppCompatActivity {
     int counter;
-    String [] board = new String [9];
+    String [][] board = new String [3][3];
     Button[] buttons = new Button[10];
     int [] index = new int[10];
 
@@ -25,8 +25,10 @@ public class TickTackToe extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        for (int k = 0; k < 9; k++){
-            board[k] = "-";
+        for (int k = 0; k < 3; k++){
+            for (int m = 0; m < 3; m++) {
+                board[k][m] = "-";
+            }
         }
         counter = 0;
         int j  = 0;
@@ -75,7 +77,8 @@ public class TickTackToe extends AppCompatActivity {
     public void click (View view) {
 
         String[] myArr = {"X", "O"};
-        int gameOver = 0;
+        int player;
+        int winner;
         /*int[] index = new int[9];
         int j = 0;
 
@@ -91,7 +94,7 @@ public class TickTackToe extends AppCompatActivity {
             button.setClickable(false);
             for (int k = 0; k < 9; k++){
                 if (buttons[k] == button){
-                    board[k] = myArr[counter % 2];
+                    board[Math.abs(k / 3)][k % 3] = myArr[counter % 2];
                 }
             }
 
@@ -106,12 +109,26 @@ public class TickTackToe extends AppCompatActivity {
             button.setBackgroundColor(Color.CYAN);
             button.setClickable(false); */
 
-            counter++;
-            if (9 == counter) {
-                gameOver = 3;
-            }
+        }
+        if (myArr[counter % 2].equals("X")){
+            player = 1;
+        }
+        else {
+            player = 2;
         }
 
+        counter++;
+        if (9 == counter) {
+            winner = 3;
+        }
+        else {
+            CheckMove checkMove = new CheckMove();
+            winner = checkMove.checking(board, player);
+        }
+
+
+
+        /*
         if (1 == counter % 2) {
             if (null != board[4] && myArr[0].equals(board[4])) {
                 if ((null != board[0]) && myArr[0].equals(board[0]) && (null != board[8]) && myArr[0].equals(board[8])) {
@@ -175,16 +192,16 @@ public class TickTackToe extends AppCompatActivity {
                     gameOver = 2;
                 }
             }
-        }
-        if (0 != gameOver){
+        } */
+        if ( 0 != winner ){
             Button result = (Button) findViewById(R.id.button_result);
             for (int i = 0; i < 10; i++){
                 buttons[i].setClickable(false);
             }
-            if (1 == gameOver){
+            if (1 == winner){
                 result.setText("Game Over! Player1 wins!");
             }
-            else if (2 == gameOver){
+            else if (2 == winner){
                 result.setText("Game Over! Player2 wins!");
             }
             else {

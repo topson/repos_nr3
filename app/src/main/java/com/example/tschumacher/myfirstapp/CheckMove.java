@@ -17,43 +17,41 @@ public class CheckMove {
         int leftColumn = column--;
         return leftColumn;
     }
-    private int checking( String board [][], int player){
+    protected int checking( String board [][], int player){
+
         int k;
         int m;
         int gameOver = 0;
         int winner = 0;
         for ( int i = 0; i < 3; i++ ){
-            for ( int j = 0; j < 3; j++ ){
-                if ( 0 == i ) {
-                    if ( board[i][j].equals(board[checkDown(i)][j]) ){
+            for ( int j = 0; j < 3; j++ ) {
+                if (0 == i) {
+                    if (board[i][j].equals(board[checkDown(i)][j])) {
                         k = checkDown(i);
-                        if ( board[k][j].equals(board[checkDown(k)][j]) ){
+                        if (board[k][j].equals(board[checkDown(k)][j])) {
                             gameOver = 1;
                         }
                     }
-                }
-                if (0 == j) {
-                    if ( board[i][j].equals(board[i][checkRight(j)]) ) {
+                } else if (0 == j) {
+                    if (board[i][j].equals(board[i][checkRight(j)])) {
                         k = checkRight(j);
-                        if ( board[i][k].equals(board[i][checkRight(k)]) ) {
+                        if (board[i][k].equals(board[i][checkRight(k)])) {
                             gameOver = 1;
                         }
                     }
-                }
-                if ( 0 == i && 0 == j){
-                    if ( board[i][j].equals(board[checkDown(i)][checkRight(j)]) ){
+                } else if (0 == i && 0 == j) {
+                    if (board[i][j].equals(board[checkDown(i)][checkRight(j)])) {
                         k = checkDown(i);
                         m = checkRight(j);
-                        if ( board[k][m].equals(board[checkDown(k)][checkRight(m)]) ){
+                        if (board[k][m].equals(board[checkDown(k)][checkRight(m)])) {
                             gameOver = 1;
                         }
                     }
-                }
-                if ( 2 == i && 0 == j){
-                    if ( board[i][j].equals(board[checkDown(i)][checkRight(j)]) ){
+                } else if (2 == i && 0 == j) {
+                    if (board[i][j].equals(board[checkDown(i)][checkLeft(j)])) {
                         k = checkDown(i);
-                        m = checkRight(j);
-                        if ( board[k][m].equals(board[checkDown(k)][checkRight(m)]) ){
+                        m = checkLeft(j);
+                        if (board[k][m].equals(board[checkDown(k)][checkLeft(m)])) {
                             gameOver = 1;
                         }
                     }
@@ -63,7 +61,7 @@ public class CheckMove {
         if ( 1 == gameOver && 1 == player){
             winner = 1;
         }
-        else {
+        else if ( 1 == gameOver && 2 == player){
             winner  = 2;
         }
         return winner;
