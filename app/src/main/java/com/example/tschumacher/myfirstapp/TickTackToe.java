@@ -11,6 +11,7 @@ import android.widget.Button;
 
 public class TickTackToe extends AppCompatActivity {
     int counter;
+    int winner;
     String [][] board = new String [3][3];
     Button[] buttons = new Button[10];
     int [] index = new int[10];
@@ -30,6 +31,7 @@ public class TickTackToe extends AppCompatActivity {
                 board[k][m] = "-";
             }
         }
+        winner = 0;
         counter = 0;
         int j  = 0;
         for (int i = R.id.button1; i <= R.id.button_result; i++){
@@ -78,7 +80,6 @@ public class TickTackToe extends AppCompatActivity {
 
         String[] myArr = {"X", "O"};
         int player;
-        int winner;
         /*int[] index = new int[9];
         int j = 0;
 
