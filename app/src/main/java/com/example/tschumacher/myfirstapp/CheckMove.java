@@ -82,22 +82,7 @@ public class CheckMove {
                             }
                         }
                     }
-                } /*else if (0 == i && 0 == j) {
-                        if (board[i][j].equals(board[checkDown(i)][checkRight(j)])) {
-                            k = checkDown(i);
-                            m = checkRight(j);
-                            if (board[k][m].equals(board[checkDown(k)][checkRight(m)])) {
-                                gameOver = 1;
-                            }
-                        }
-                    } else if (2 == i && 0 == j) {
-                        if (board[i][j].equals(board[checkDown(i)][checkLeft(j)])) {
-                            k = checkDown(i);
-                            m = checkLeft(j);
-                            if (board[k][m].equals(board[checkDown(k)][checkLeft(m)])) {
-                                gameOver = 1;
-                            }
-                        }*/
+                }
             }
         }
         if ( 1 == gameOver && 1 == player){
