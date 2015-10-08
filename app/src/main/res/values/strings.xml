@@ -8,4 +8,8 @@
     <string name="title_activity_display_message">MyMessage</string>
     <string name="action_search">Search</string>
     <string name="title_activity_tick_tack_toe">TickTackToe</string>
+    <string name="winner1">Game Over! Player1 wins!</string>
+    <string name="winner2">Game Over! Player2 wins!</string>
+    <string name="winner3">Game Over! Nobody wins, Press RESTART to go again</string>
+    <string name="result">Result</string>
 </resources>

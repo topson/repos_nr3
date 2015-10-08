@@ -42,7 +42,7 @@ public class TickTackToe extends AppCompatActivity {
             Drawable background = findViewById(R.id.restart).getBackground();
             if (9 == i){
                 buttons[i] = (Button) findViewById(index[i]);
-                buttons[i].setText("Result");
+                buttons[i].setText(R.string.result);
             }
             else {
                 buttons[i] = (Button) findViewById(index[i]);
@@ -113,13 +113,13 @@ public class TickTackToe extends AppCompatActivity {
                 buttons[i].setClickable(false);
             }
             if (1 == winner){
-                result.setText("Game Over! Player1 wins!");
+                result.setText(R.string.winner1);
             }
             else if (2 == winner){
-                result.setText("Game Over! Player2 wins!");
+                result.setText(R.string.winner2);
             }
             else {
-                result.setText("Game Over! Nobody wins, Press RESTART to go again");
+                result.setText(R.string.winner3);
             }
         }
     }
