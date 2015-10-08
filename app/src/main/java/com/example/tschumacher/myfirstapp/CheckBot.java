@@ -4,7 +4,7 @@ package com.example.tschumacher.myfirstapp;
  * Created by t.schumacher on 06.10.2015.
  */
 
-public class CheckBot {
+class CheckBot {
     int gameOver;
     protected int checkRight ( String board [][] ){
         for (int i = 0; i < 3; i++){

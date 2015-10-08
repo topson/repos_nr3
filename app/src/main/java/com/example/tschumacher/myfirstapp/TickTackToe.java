@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class TickTackToe extends AppCompatActivity {
+class TickTackToe extends AppCompatActivity {
     int counter;
     int winner;
     String [][] board = new String [3][3];

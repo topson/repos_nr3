@@ -3,7 +3,7 @@ package com.example.tschumacher.myfirstapp;
 /**
  * Created by t.schumacher on 05.10.2015.
  */
-public class CheckMove {
+class CheckMove {
 
     protected int checking( String board [][], int player ) {
         int gameOver;
