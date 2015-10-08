@@ -6,6 +6,7 @@ package com.example.tschumacher.myfirstapp;
 
 class CheckBot {
     int gameOver;
+
     protected int checkRight ( String board [][] ){
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
@@ -17,7 +18,7 @@ class CheckBot {
                 }
                 catch (ArrayIndexOutOfBoundsException e){
                     gameOver = 0;
-                    return gameOver;
+                    continue;
                 }
             }
         }
@@ -35,7 +36,7 @@ class CheckBot {
                 }
                 catch (ArrayIndexOutOfBoundsException e){
                     gameOver = 0;
-                    return gameOver;
+                    continue;
                 }
             }
         }
@@ -53,7 +54,7 @@ class CheckBot {
                 }
                 catch (ArrayIndexOutOfBoundsException e){
                     gameOver = 0;
-                    return gameOver;
+                    continue;
                 }
             }
         }
@@ -71,6 +72,8 @@ class CheckBot {
                 }
                 catch (ArrayIndexOutOfBoundsException e){
                        gameOver = 0;
+                       continue;
+
                 }
             }
         }
