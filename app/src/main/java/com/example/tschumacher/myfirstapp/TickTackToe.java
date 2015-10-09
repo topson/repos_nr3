@@ -81,7 +81,11 @@ public class TickTackToe extends AppCompatActivity {
         if (view instanceof Button) {
             Button button = (Button) view;
             button.setText(myArr[counter % 2]);
-            button.setBackgroundColor(Color.CYAN);
+            if ( myArr[counter % 2].equals("X") ) {
+                button.setBackgroundColor(Color.CYAN);
+            } else {
+                button.setBackgroundColor(Color.RED);
+            }
             button.setClickable(false);
             for (int k = 0; k < 9; k++){
                 if (buttons[k] == button){
