@@ -10,7 +10,7 @@ class CheckMove {
         int winner;
 
         CheckBot checkBot = new CheckBot();
-        if (checkBot.checkRight(board) == 1 || checkBot.checkDown(board) == 1 || checkBot.checkDR(board) == 1 || checkBot.checkUR(board) == 1) {
+        if ( 1 == checkBot.checkRight(board) || 1 == checkBot.checkDown(board) || 1 == checkBot.checkDR(board) || 1 == checkBot.checkUR(board) ) {
             gameOver = 1;
         }
         else {

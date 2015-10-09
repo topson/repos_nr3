@@ -5,15 +5,39 @@ package com.example.tschumacher.myfirstapp;
  */
 
 class ButtonText extends TickTackToe {
+    public enum Player{
+        PLAYER1, PLAYER2
+    }
+
+    Player plyr;
+
     int player;
 
-    protected void clickMe (){
+    public Player getPlyr(Player plyr){
+        this.plyr = plyr;
+        if ( myArr[counter % 2].equals("X")){
+            plyr = Player.PLAYER1;
+        }
+        else {
+            plyr = Player.PLAYER2;
+        }
+        return plyr;
+    }
 
-        if ( myArr[counter % 2].equals("X") ) {
+    protected void clickMe (){
+        /*if ( myArr[counter % 2].equals("X") ) {
             player = 1;
         } else {
             player = 2;
+        }*/
+        plyr = getPlyr(plyr);
+        if ( plyr == Player.PLAYER1 ){
+            player = 1;
         }
+        else {
+            player = 2;
+        }
+
         counter++;
         if (9 == counter) {
             winner = 3;
