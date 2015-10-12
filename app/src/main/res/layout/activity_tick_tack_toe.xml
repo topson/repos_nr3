@@ -121,4 +121,14 @@
         android:layout_marginBottom="49dp"
         android:onClick="restart" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score"
+        android:id="@+id/score_button"
+        android:layout_alignTop="@+id/restart"
+        android:layout_alignRight="@+id/button9"
+        android:layout_alignEnd="@+id/button9"
+        android:onClick="showScore"/>
+
 </RelativeLayout>

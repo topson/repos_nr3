@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class TickTackToe extends AppCompatActivity {
+    static int gameCount = 0;
     static int counter;
     static int winner;
     static String[][] board = new String[3][3];
@@ -25,7 +26,7 @@ public class TickTackToe extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-
+        gameCount++;
         for (int k = 0; k < 3; k++) {
             for (int m = 0; m < 3; m++) {
                 board[k][m] = "-";
@@ -112,7 +113,8 @@ public class TickTackToe extends AppCompatActivity {
         }
     }
 
-    public void restart ( View view ){
+    public void restart ( View view) {
         onStart();
     }
+
 }
