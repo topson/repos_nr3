@@ -12,4 +12,6 @@
     <string name="winner2">Game Over! Player2 wins!</string>
     <string name="winner3">Game Over! Nobody wins, Press RESTART to go again</string>
     <string name="result">Result</string>
+    <string name="scoreBtn">Score</string>
+    <string name="title_activity_show_score">ShowScore</string>
 </resources>

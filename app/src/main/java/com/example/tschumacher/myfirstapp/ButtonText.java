@@ -22,6 +22,9 @@ class ButtonText extends TickTackToe {
             } else {
                 winner = checkMove.checking(board, player);
             }
+        } else {
+            CheckMove checkMove = new CheckMove();
+            winner = checkMove.checking(board, player);
         }
     }
 }

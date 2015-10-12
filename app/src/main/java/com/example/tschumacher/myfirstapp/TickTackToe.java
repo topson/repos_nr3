@@ -1,5 +1,6 @@
 package com.example.tschumacher.myfirstapp;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +11,13 @@ import android.view.View;
 import android.widget.Button;
 
 public class TickTackToe extends AppCompatActivity {
+    static int [] score = {0, 0, 0};
     static int gameCount = 0;
     static int counter;
     static int winner;
     static String[][] board = new String[3][3];
-    static Button[] buttons = new Button[10];
-    int[] index = new int[10];
+    static Button[] buttons = new Button[12];
+    int[] index = new int[12];
     static String[] myArr = {"X", "O"};
 
     @Override
@@ -35,13 +37,13 @@ public class TickTackToe extends AppCompatActivity {
         winner = 0;
         counter = 0;
         int j = 0;
-        for (int i = R.id.button1; i <= R.id.button_result; i++) {
+        for (int i = R.id.button1; i <= R.id.score_button; i++) {
             index[j] = i;
             j++;
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 12; i++) {
             Drawable background = findViewById(R.id.restart).getBackground();
-            if (9 == i) {
+            /*if (9 == i) {
                 buttons[i] = (Button) findViewById(index[i]);
                 buttons[i].setText(R.string.result);
             } else {
@@ -50,6 +52,24 @@ public class TickTackToe extends AppCompatActivity {
                 buttons[i].setClickable(true);
                 buttons[i].setBackgroundColor(Color.LTGRAY);
                 buttons[i].setBackground(background);
+            }*/
+            switch (i) {
+                case 11:
+                    buttons[i] = (Button) findViewById(index[i]);
+                    buttons[i].setText(R.string.scoreBtn);
+                    break;
+                case 10:
+                    break;
+                case 9:
+                    buttons[i] = (Button) findViewById(index[i]);
+                    buttons[i].setText(R.string.result);
+                    break;
+                default:
+                    buttons[i] = (Button) findViewById(index[i]);
+                    buttons[i].setText("-");
+                    buttons[i].setClickable(true);
+                    buttons[i].setBackgroundColor(Color.LTGRAY);
+                    buttons[i].setBackground(background);
             }
         }
 
@@ -104,17 +124,27 @@ public class TickTackToe extends AppCompatActivity {
             }
             if (1 == winner) {
                 result.setText(R.string.winner1);
+                score[0]++;
             } else if (2 == winner) {
                 result.setText(R.string.winner2);
+                score[1]++;
             } else {
                 result.setText(R.string.winner3);
+                score[2]++;
             }
 
         }
     }
 
-    public void restart ( View view) {
+    public void restart ( View view ) {
         onStart();
+    }
+
+    public void showScore (View view) {
+        //Button button = (Button) findViewById(R.id.score_button);
+        //button.setText("player1 score: " +score[0]);
+        Intent intent = new Intent(this, ShowScore.class);
+        startActivity(intent);
     }
 
 }

@@ -32,6 +32,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tschumacher.myfirstapp.MyActivity" />
         </activity>
+        <activity
+            android:name=".ShowScore"
+            android:label="@string/title_activity_show_score"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
