@@ -22,7 +22,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="84dp" />
+        android:layout_marginTop="84dp"
+        android:layout_toLeftOf="@+id/score_text"
+        android:layout_toStartOf="@+id/score_text" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -33,7 +35,9 @@
         android:layout_marginTop="76dp"
         android:layout_below="@+id/playerOne"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/playerOne"
+        android:layout_alignEnd="@+id/playerOne" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -42,8 +46,9 @@
         android:text="Draw"
         android:id="@+id/noWinner"
         android:layout_below="@+id/playerTwo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="87dp" />
+        android:layout_marginTop="87dp"
+        android:layout_toLeftOf="@+id/score_text"
+        android:layout_toStartOf="@+id/score_text" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,4 +70,39 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="62dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/playerOneScore"
+        android:layout_alignTop="@+id/playerOne"
+        android:layout_alignLeft="@+id/score_text"
+        android:layout_alignStart="@+id/score_text"
+        android:layout_alignRight="@+id/back_button"
+        android:layout_alignEnd="@+id/back_button"
+        android:layout_above="@+id/playerTwo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/playerTwoScore"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/noWinner"
+        android:layout_alignLeft="@+id/playerOneScore"
+        android:layout_alignStart="@+id/playerOneScore" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/drawScore"
+        android:layout_above="@+id/back_button"
+        android:layout_alignRight="@+id/back_button"
+        android:layout_alignEnd="@+id/back_button"
+        android:layout_alignTop="@+id/noWinner"
+        android:layout_alignLeft="@+id/playerTwoScore"
+        android:layout_alignStart="@+id/playerTwoScore" />
 </RelativeLayout>
