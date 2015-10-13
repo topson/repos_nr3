@@ -14,4 +14,7 @@
     <string name="result">Result</string>
     <string name="scoreBtn">Score</string>
     <string name="title_activity_show_score">ShowScore</string>
+    <string name="playerOne">Player1:     </string>
+    <string name="playerTwo">Player2:     </string>
+    <string name="noWinner">Draw:        </string>
 </resources>

@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Player1"
-        android:id="@+id/player1"
+        android:id="@+id/playerOne"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -29,9 +29,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Player2"
-        android:id="@+id/player2"
+        android:id="@+id/playerTwo"
         android:layout_marginTop="76dp"
-        android:layout_below="@+id/player1"
+        android:layout_below="@+id/playerOne"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -40,8 +40,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Draw"
-        android:id="@+id/draw"
-        android:layout_below="@+id/player2"
+        android:id="@+id/noWinner"
+        android:layout_below="@+id/playerTwo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="87dp" />
 
@@ -52,7 +52,8 @@
         android:text="Score"
         android:id="@+id/score_text"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:autoText="false" />
 
     <Button
         android:layout_width="fill_parent"
@@ -60,7 +61,7 @@
         android:text="Back"
         android:id="@+id/back_button"
         android:onClick="goBack"
-        android:layout_below="@+id/draw"
+        android:layout_below="@+id/noWinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="62dp" />
