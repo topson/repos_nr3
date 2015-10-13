@@ -12,25 +12,15 @@ public class ShowScore extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_score);
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        }); */
     }
+
     protected void onStart( ){
         super.onStart();
         for ( int i = R.id.playerOneScore; i <= R.id.drawScore; i++){
             switch ( i ){
                 case R.id.playerOneScore:
                     TextView playerOneScore = (TextView) findViewById(R.id.playerOneScore);
-                    playerOneScore.setText("" + TickTackToe.score[0] + "");
+                    playerOneScore.setText("" + TickTackToe.score[0]);
                     break;
                 case R.id.playerTwoScore:
                     TextView playerTwoScore = (TextView) findViewById(R.id.playerTwoScore);
