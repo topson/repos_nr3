@@ -24,22 +24,26 @@ public class ShowScore extends AppCompatActivity {
             }
         }); */
     }
-    protected void onStart(){
+    protected void onStart( ){
         super.onStart();
-        TickTackToe ttt = new TickTackToe();
         for ( int i = R.id.playerOne; i <= R.id.noWinner; i++){
             switch ( i ){
                 case R.id.playerOne:
                     TextView playerNrOne = (TextView) findViewById(R.id.playerOne);
-                    playerNrOne.setText("Player1:     " + ttt.score[0]);
+                    playerNrOne.setText(R.string.playerOne);
+                    playerNrOne.append("  " + TickTackToe.score[0]);
                     break;
                 case R.id.playerTwo:
                     TextView playerDeux = (TextView) findViewById(R.id.playerTwo);
-                    playerDeux.setText("Player2:     " + ttt.score[1]);
+                    playerDeux.setText(R.string.playerTwo);
+                    playerDeux.append("  " + TickTackToe.score[1]);
                     break;
                 case R.id.noWinner:
                     TextView deuce = (TextView) findViewById(R.id.noWinner);
-                    deuce.setText("Draw:        " + ttt.score[2]);
+                    deuce.setText(R.string.noWinner);
+                    deuce.append("       " + TickTackToe.score[2]);
+                    break;
+                default:
                     break;
             }
         }

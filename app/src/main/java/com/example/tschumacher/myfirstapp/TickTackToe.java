@@ -42,7 +42,7 @@ public class TickTackToe extends AppCompatActivity {
             j++;
         }
         for (int i = 0; i < 12; i++) {
-            Drawable background = findViewById(R.id.restart).getBackground();
+            Drawable background =  findViewById(R.id.restart).getBackground();
             /*if (9 == i) {
                 buttons[i] = (Button) findViewById(index[i]);
                 buttons[i].setText(R.string.result);
